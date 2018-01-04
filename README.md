@@ -9,6 +9,8 @@
 The Problem is in this case that companies do not have a decent overview of the countries where they should locate their HQ's and this will provide that
 
 ![](doc/worldmap.png)
+![](doc/barchart.png)
+![](doc/piechart1.png)
 
 ## Visualisations
 ### Visualisation of the World map
