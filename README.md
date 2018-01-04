@@ -10,7 +10,7 @@ The Problem is in this case that companies do not have a decent overview of the 
 
 ![](doc/worldmap.png)
 ![](doc/barchart.png)
-![](doc/piechart1.png)
+![](doc/PieChart1.png)
 
 ## Visualisations
 ### Visualisation of the World map
