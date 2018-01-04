@@ -1,2 +1,5 @@
 # ProgrammeerProject
-minor programmeren eind project
+Daan Uittenhout
+11057777
+Minor Programmeren
+
