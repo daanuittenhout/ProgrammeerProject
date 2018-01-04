@@ -1,5 +1,4 @@
 # ProgrammeerProject
-  Daan Uittenhout
-  11057777
-  Minor Programmeren
-
+  Daan Uittenhout\n
+  11057777\n
+  Minor Programmeren\n
