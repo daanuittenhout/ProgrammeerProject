@@ -4,8 +4,10 @@
 -  Minor Programmeren
 
 ## Goals
-
+- Help companies choose the country where they want to have their hq's and show why some countries are popular
 ## Problem Statement
+The Problem is in this case that companies do not have a decent overview of the countries where they should locate their HQ's and this will provide that
+
 
 
 ## Visualisations
@@ -14,6 +16,7 @@ The world map will show on click/hoover the corporate tax rate of that specific 
 ### Visualisation of a Barchart
 The barchart will show the score of the different pillars of the political stability index.
 ### Visualisation of a pie chart
+minimum wage, schooling, costs of living
 Tax income per country and the corporate part as a part of the pie
 ### Interactive components
 * A table to compare all the stats of max 2 countries
