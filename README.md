@@ -15,12 +15,39 @@ The Problem is in this case that companies do not have a decent overview of the 
 ### Visualisation of the World map
 The world map will show on click/hoover the corporate tax rate of that specific country. The colours of the countries will indicate in which range their tax rate is in that specific year.
 ### Visualisation of a Barchart
-The barchart will show the score of the different pillars of the political stability index.
-### Visualisation of a pie chart
-minimum wage, schooling, costs of living
-Tax income per country and the corporate part as a part of the pie
+The barchart will show the score of the different pillars
+- The Pillars
+  * minimum wage
+  * education level
+  * costs of (raw)materials
+  * human rights
+  * environment index
+  * child labour index
+  * religion
+  * innovation level
+  * level of infrastructure
+  * English speaking percentage
+  * political stability
+
+### Visualisation of a flower chart
+there will be a checkbox how important the visitor evaluates the different pillars and than the top 5 matches will appear on the svg as a flower chart
+- The Pillars
+  * minimum wage
+  * education level
+  * costs of (raw)materials
+  * human rights
+  * environment index
+  * child labour index
+  * religion
+  * innovation level
+  * level of infrastructure
+  * English speaking percentage
+  * political stability
+
+
+
 ### Interactive components
-* A table to compare all the stats of max 2 countries
+* the checkboxes to compare all the stats of countries
 * slider for the different years
 
 ## Data Sources
