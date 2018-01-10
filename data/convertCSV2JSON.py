@@ -17,7 +17,7 @@ json_map = {}
 
 
 # Convert data from csv to JSON object with given keys.
-with open("data1.csv", 'r') as csvfile, open("data_map.json", 'w') as jsonfile_map, open("data_bar.json", "w") as jsonfile_bar:
+with open("politicalindex.csv", 'r') as csvfile, open("dataMap.json", 'w') as jsonfile_map, open("dataBar.json", 'w') as jsonfile_map:
 	# reader = csv.DictReader(csvfile, fieldnames, delimiter=';')
 	reader = csv.reader(csvfile, delimiter=',')
 

@@ -1,4 +1,3 @@
-a list of data sources if you will get data from an external source, including information on how your are going to filter and transform the data for your project
 # Data sources
 - worldbank
 
@@ -15,7 +14,7 @@ the checkboxes will interact with the countries
 and the flowerchart will be the best matches
 
 
-a diagram with an overview of the technical components of your app (visualizations, scraper etc etc)
+
 # Code structure
 
 
