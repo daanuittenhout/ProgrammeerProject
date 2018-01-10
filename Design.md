@@ -8,7 +8,7 @@ The data will be downloaded as csv and will be converted to json files this to p
 Data will also be recalculated to show the countries that matches with the company's preferences
 
 # technical components
-![](doc/diagram.pnd)
+![](doc/diagram.png)
 
 the slider will interact with the year of the data in the json files
 the checkboxes will interact with the countries
