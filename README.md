@@ -2,12 +2,9 @@
 -  **Daan Uittenhout**
 -  *11057777*
 -  Minor Programmeren
-<<<<<<< HEAD
-https://daanuittenhout.github.io/ProgrammeerProject
-=======
-https://daanuittenhout.github.io/DataProcessing
 
->>>>>>> 23fc9f9598b0dd39caeb815c472cb6f5fbeeba25
+https://daanuittenhout.github.io/ProgrammeerProject
+
 ## Goals
 - Help companies choose the country where they want to have their hq's and show why some countries are popular
 ## Problem Statement
