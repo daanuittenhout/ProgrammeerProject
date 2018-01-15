@@ -18,7 +18,11 @@ body {
 
 
 #map {
+  background: white
+}
+.datamap {
   background: red
+  width: 100%
 }
 #header {
   background: blue

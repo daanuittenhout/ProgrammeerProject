@@ -7,8 +7,10 @@
 		<link rel="shortcut icon" href="doc/icon.ico"></link>
     <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
     <script src="map/map.js"></script>
+		<script src="data/dataBar.json"></script>
     <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
     <script type="text/javascript" src="libs/queue.v1.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="libs/datamaps.world.hires.min.js" charset="utf-8"></script>
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="//d3js.org/topojson.v1.min.js"></script>
 		<script src="https://d3js.org/topojson.v2.min.js"></script>
@@ -17,6 +19,7 @@
 		<script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
+
 		<script type="text/javascript" src="scripts/tax.js"></script>
 
 
@@ -32,9 +35,9 @@
 				<div class="col-md-1" id="header">header</div>
 			</div>
 		  <div class="row">
-		    <div class="col-md-6" id="map">map</div>
-				<div class="col-md-1" id="legend">legend</div>
-		    <div class="col-md-5" id="checkbox">
+		    <div class="col-md-8" id="map">
+					<div id="map1"></div></div>
+		    <div class="col-md-4" id="checkbox">
 					<table class="table">
   					<thead>
 							<tr>
