@@ -4,4 +4,8 @@
 - line lenghth 80 characters
 - double quotes
 - indentatie 4 spaces (1 tab)
-- 
+- space after keyword
+- taal espanol
+- witte regels
+- punt comma
+- meerdere variables
