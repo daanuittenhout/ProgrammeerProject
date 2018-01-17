@@ -1,0 +1,7 @@
+- Comments: Hoofdletters
+- Varable name: camelCase
+- space for operaters
+- line lenghth 80 characters
+- double quotes
+- indentatie 4 spaces (1 tab)
+- 
