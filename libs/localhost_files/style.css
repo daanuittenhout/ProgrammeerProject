@@ -15,12 +15,7 @@ body {
   text-align: center;
   font: 15px sans-serif;
 }
-#scrollable { height: 100px; overflow: hidden; border: solid 1px white;}
-#scrollable .inner { height: 1000px; }
-#scrollable .content {
-             height: 94px;  margin: 2px 0;
-             background-color: steelblue;
-             color: white;}
+
 
 #map {
   background: white

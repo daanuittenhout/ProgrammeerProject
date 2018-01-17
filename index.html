@@ -4,10 +4,11 @@
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="https://d3js.org/d3-axis.v1.min.js"></script>
 		<link rel="shortcut icon" href="doc/icon.ico"></link>
     <script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="map/map.js"></script>
-		<script src="data/dataBar.json"></script>
     <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
     <script type="text/javascript" src="libs/queue.v1.min.js" charset="utf-8"></script>
 		<script type="text/javascript" src="libs/datamaps.world.hires.min.js" charset="utf-8"></script>
@@ -35,76 +36,9 @@
 				<div class="col-md-1" id="header">header</div>
 			</div>
 		  <div class="row">
-		    <div class="col-md-8" id="map">
+		    <div class="col-md-12" id="map">
 					<div id="map1"></div></div>
-		    <div class="col-md-4" id="checkbox">
-					<table class="table">
-  					<thead>
-							<tr>
-								<th>
-									onderwerp
-								</th>
-								<th>
-									helemaal mee oneens
-								</th>
-								<th>
-									mee oneens
-								</th>
-								<th>
-									neutraal
-								</th>
-								<th>
-									mee eens
-								</th>
-								<th>
-									helemaal mee eens
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>
-									<div class="form-check form-check-inline">
-									  <label class="form-check-label">
-									    <input type="checkbox" class="form-check-input" value="">
-									  </label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-									  <label class="form-check-label">
-									    <input type="checkbox" class="form-check-input" value="">
-									  </label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-									  <label class="form-check-label">
-									    <input type="checkbox" class="form-check-input" value="">
-									  </label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-									  <label class="form-check-label">
-									    <input type="checkbox" class="form-check-input" value="">
-									  </label>
-									</div>
-								</td>
-								<td>
-									<div class="form-check form-check-inline">
-									  <label class="form-check-label">
-									    <input type="checkbox" class="form-check-input" value="">
-									  </label>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-				 </table>
-
-				</div>
-		  </div>
+		   </div>
 			<div class="row">
 				<div class="col-md-8" id="slider">slider</div>
 				<div class="col-md-2" id="gobutton" align="center">
@@ -116,9 +50,79 @@
 
 			</div>
 		  <div class="row">
-		    <div class="col-md-6" id="bar">bar</div>
-		    <div class="col-md-6"id="flower">flower</div>
+				<div class="col-md-6" id="bar">bar</div>
+				<div class="col-md-6" id="checkbox">
+ 					<table class="table">
+   					<thead>
+ 							<tr>
+ 								<th>
+ 									onderwerp
+ 								</th>
+ 								<th>
+ 									helemaal mee oneens
+ 								</th>
+ 								<th>
+ 									mee oneens
+ 								</th>
+ 								<th>
+ 									neutraal
+ 								</th>
+ 								<th>
+ 									mee eens
+ 								</th>
+ 								<th>
+ 									helemaal mee eens
+ 								</th>
+ 							</tr>
+ 						</thead>
+ 						<tbody>
+ 							<tr>
+ 								<th scope="row">1</th>
+ 								<td>
+ 									<div class="form-check form-check-inline">
+ 									  <label class="form-check-label">
+ 									    <input type="checkbox" class="form-check-input" value="">
+ 									  </label>
+ 									</div>
+ 								</td>
+ 								<td>
+ 									<div class="form-check form-check-inline">
+ 									  <label class="form-check-label">
+ 									    <input type="checkbox" class="form-check-input" value="">
+ 									  </label>
+ 									</div>
+ 								</td>
+ 								<td>
+ 									<div class="form-check form-check-inline">
+ 									  <label class="form-check-label">
+ 									    <input type="checkbox" class="form-check-input" value="">
+ 									  </label>
+ 									</div>
+ 								</td>
+ 								<td>
+ 									<div class="form-check form-check-inline">
+ 									  <label class="form-check-label">
+ 									    <input type="checkbox" class="form-check-input" value="">
+ 									  </label>
+ 									</div>
+ 								</td>
+ 								<td>
+ 									<div class="form-check form-check-inline">
+ 									  <label class="form-check-label">
+ 									    <input type="checkbox" class="form-check-input" value="">
+ 									  </label>
+ 									</div>
+ 								</td>
+ 							</tr>
+ 						</tbody>
+ 				 </table>
+
+ 				</div>
 		  </div>
+			<div class="row">
+				<div class="col-md-6"id="scrollable ">bar1</div>
+				<div class="col-md-6"id="flower">flower</div>
+			</div>
 			<div class="row">
 				<div class="col-md-12" id="footer">Daan Uittenhout</div>
 			</div>
