@@ -21,10 +21,14 @@ window.onload = function(e) {
   // var path = d3.geo.path()
   //         .projection(projection);
 
-  // var svg = d3.select("#map").append("svg")
-  //         .attr("height", 10)
-  //         .attr("width", 10)
-  //         .attr("class", "svg")
+  var svg = d3.select("#map1").append("svg")
+    .attr("height", 1100)
+    .attr("width", 0)
+    .attr("class", "svg2")
+
+  var color = d3.scale.linear()
+    .domain([0,55])
+    .range(["#BBDEFB", "#0D47A1"])
 
 
   var svg1 = d3.select("#checkbox").append("svg")
@@ -50,38 +54,59 @@ window.onload = function(e) {
     .attr("height", 30)
     .attr("width", 30)
     .style("opacity", 0);
-
-  var basic = new Datamap({
-    element: document.getElementById("map")
-
-  });
   d3.json("../data/corTax1.json", function(data) {
-    d3.selectAll('.datamaps-subunit').on("mouseover", function(d) {
-      if(typeof data[d.properties.name] !== "undefined"){
-        dummy = data[d.properties.name]["Tax"]
-        if (typeof x !== "undefined") {
-          ctr = dummy
-        }}
-        tool.transition()
-          .duration(200)
-          .style("opacity", .9);
-        tool.html(d.properties.name + "\n" + "Corporate Tax rate" + ctr)
-          .style("left", (d3.event.pageX) + 10 + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      })
-      .on("mouseout", function(d) {
-        tool.transition()
-          .duration(500)
-          .style("opacity", 0);
+    var basic = new Datamap({
+      element: document.getElementById("map"),
+      projection: 'mercator',
+      geographyConfig: {
+        highlightBorderColor: '#bada55',
+        popupTemplate: function(geography, d) {
+          ctr = "not known"
+          if (typeof data[geography.properties.name] !== "undefined") {
+            dummy = data[geography.properties.name]["Tax"]
+            if (typeof x !== "undefined") {
+              ctr = String(dummy) + ("%")
+            }
+          }
+          return ['<div class="hoverinfo">',
+            '<strong>', geography.properties.name, '</strong>',
+            '<br>Tax rate: <strong>', ctr, '</strong>',
+            '</div>'
+          ].join('');
+        },
+        highlightBorderWidth: 3
+      },
+      fills: {
+        defaultFill: "#ABDDA4",
+        "Tax": "red",
+      },
 
-      })
+    });
   })
+  // d3.json("../data/corTax1.json", function(data) {
+  //   d3.selectAll('.datamaps-subunit').on("mouseover", function(d) {
+  // ctr = "not known"
+  // if (typeof data[d.properties.name] !== "undefined") {
+  //   dummy = data[d.properties.name]["Tax"]
+  //   if (typeof x !== "undefined") {
+  //     ctr = dummy
+  //   }
+  // }
+  //       tool.transition()
+  //         .duration(200)
+  //         .style("opacity", .9);
+  //       tool.html(d.properties.name + "\r" + "Corporate Tax rate: " + ctr + "%")
+  //         .style("left", (d3.event.pageX) + "px")
+  //         .style("top", (d3.event.pageY - 28) + "px");
+  //     })
+  //     .on("mouseout", function(d) {
+  //       tool.transition()
+  //         .duration(500)
+  //         .style("opacity", 0);
+  //
+  //     })
+  // })
 
-  d3.select(".datamap")
-    .attr("width", "100%")
-    .attr("height", "750")
-    .attr("transform", "translate(" + -50 + "," + -50 + ")")
-    .attr("viewBox", "-50 -100 1600 100")
   d3.select("path")
     .attr("height", "100%")
 
@@ -134,7 +159,11 @@ window.onload = function(e) {
     dataPilars.push(Object.getOwnPropertyNames(data1))
 
     for (var i = 0; i < dataEstimates[0].length; i++) {
-      dataList.push(parseFloat(dataEstimates[0][i]))
+      if (isNaN(dataEstimates[0][i])) {
+        dataList = []
+      } else {
+        dataList.push(parseFloat(dataEstimates[0][i]))
+      }
     }
     console.log(dataList);
     // Scale the range of the data in the domains

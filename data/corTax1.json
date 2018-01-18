@@ -1,4 +1,7 @@
 {
+  "Afghanistan": {
+    "Tax": "20"
+  },
   "Albania": {
     "Tax": "15"
   },
@@ -107,7 +110,7 @@
   "Colombia": {
     "Tax": "34"
   },
-  "Congo (Democratic Republic of the)": {
+  "Congo, the Democratic Republic of the": {
     "Tax": "35"
   },
   "Costa Rica": {
@@ -224,7 +227,7 @@
   "Italy": {
     "Tax": "24"
   },
-  "Ivory Coast": {
+  "Côte d'Ivoire": {
     "Tax": "25"
   },
   "Jamaica": {
@@ -371,7 +374,7 @@
   "Romania": {
     "Tax": "16"
   },
-  "Russia": {
+  "Russian Federation": {
     "Tax": "20"
   },
   "Rwanda": {
@@ -494,10 +497,10 @@
   "Vanuatu": {
     "Tax": "0"
   },
-  "Venezuela": {
+  "Venezuela, Bolivarian Republic of": {
     "Tax": "34"
   },
-  "Vietnam": {
+  "Viet Nam": {
     "Tax": "20"
   },
   "Yemen": {

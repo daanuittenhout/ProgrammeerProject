@@ -1,14 +1,17 @@
-div.tooltip {
+tool.tooltip {
  	position: absolute;
 	text-align: center;
-	width: 60px;
-	height: 28px;
+	width: 70px;
+	height: 50px;
 	padding: 2px;
 	font: 12px sans-serif;
 	background: white;
 	border: 0px;
-	border-radius: 8px;
+	border-radius: 10px;
 	pointer-events: none;
+}
+.datamaps-subunit :hover{
+    background-color: yellow;
 }
 
 body {
@@ -25,6 +28,7 @@ body {
 #map {
   background: white
 }
+
 .datamap {
   background: red
   width: 100%

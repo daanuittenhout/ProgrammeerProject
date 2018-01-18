@@ -9,5 +9,4 @@ bar chart works
 interactivity with map and slider
 - 18/01
 tooltip
-colours map
 start checkboxes
