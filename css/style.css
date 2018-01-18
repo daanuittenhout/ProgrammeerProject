@@ -10,9 +10,7 @@ tool.tooltip {
 	border-radius: 10px;
 	pointer-events: none;
 }
-.datamaps-subunit :hover{
-    background-color: yellow;
-}
+
 
 body {
   text-align: center;
