@@ -13,7 +13,7 @@ div.tooltip {
 
 body {
   text-align: center;
-  font: 15px sans-serif;
+  font: 10px sans-serif;
 }
 #scrollable { height: 100px; overflow: hidden; border: solid 1px white;}
 #scrollable .inner { height: 1000px; }
@@ -51,6 +51,10 @@ body {
   background: yellow
 }
 #bar {
-  background: purple
+  background: white
+}
+.xAxis {
+  stroke-width: 1px;
+
 }
 /* Legend Font Style */

@@ -8,19 +8,11 @@ window.onload = function(e) {
   var h = 500,
     w = 1000;
   fill = "100%"
-  var x = d3.scale.ordinal().rangeRoundBands([0, w], .05);
+  var x = d3.scale.ordinal().rangeRoundBands([0, 300], 1);
 
-  var y = d3.scale.linear().range([h, 0]);
+  var y = d3.scale.linear().range([400, 0]);
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickFormat(d3.time.format("%Y-%m"));
 
-  var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10);
   // scale the height of the bars
   // var projection = d3.geo.mercator()
   //         .scale(1)
@@ -44,18 +36,47 @@ window.onload = function(e) {
     .attr("width", fill);
 
   var svg3 = d3.select("#bar").append("svg")
-    .attr("height", h)
+    .attr("height", 600)
     .attr("width", fill);
 
   var x = d3.scale.ordinal()
-    .rangeRoundBands([0, w], .1);
+    .rangeRoundBands([0, 600], .5);
 
   var y = d3.scale.linear()
     .range([h, 0]);
 
+  var tool = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .attr("height", 30)
+    .attr("width", 30)
+    .style("opacity", 0);
+
   var basic = new Datamap({
     element: document.getElementById("map")
+
   });
+  d3.json("../data/corTax1.json", function(data) {
+    d3.selectAll('.datamaps-subunit').on("mouseover", function(d) {
+      if(typeof data[d.properties.name] !== "undefined"){
+        dummy = data[d.properties.name]["Tax"]
+        if (typeof x !== "undefined") {
+          ctr = dummy
+        }}
+        tool.transition()
+          .duration(200)
+          .style("opacity", .9);
+        tool.html(d.properties.name + "\n" + "Corporate Tax rate" + ctr)
+          .style("left", (d3.event.pageX) + 10 + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+        tool.transition()
+          .duration(500)
+          .style("opacity", 0);
+
+      })
+  })
+
   d3.select(".datamap")
     .attr("width", "100%")
     .attr("height", "750")
@@ -82,6 +103,8 @@ window.onload = function(e) {
     d3.select("#year").on("input", function() {
       year1 = this.value
       title.text(year1)
+      data1 = data[String(year1)][String(countrycode)]
+      updatebar(data1, country, year1, x, y)
     })
     d3.selectAll('.datamaps-subunit').on("click", function(d, dataBar) {
       $('html,body').animate({
@@ -91,7 +114,6 @@ window.onload = function(e) {
       countrycode = d["id"];
       console.log(country);
       data1 = data[String(year1)][String(countrycode)]
-
       updatebar(data1, country, year1, x, y)
       // d3.event.stopPropagation();
     });
@@ -100,58 +122,69 @@ window.onload = function(e) {
 
   function updatebar(data1, country, year1, x, y, remove) {
 
-    d3.selectAll(".yaxis1").remove()
+    d3.selectAll(".yaxis").remove()
     d3.selectAll(".bar").remove()
-    d3.selectAll(".xaxis1").remove()
+    d3.selectAll(".xaxis").remove()
 
     dataPilars = []
-    data_list = []
+    dataList = []
     dataEstimates = []
+    dataAbr = ["Lack of Terrorism", "Lack of Corruption", "Effectiveness(Government)", "Regulatory Quality", "Rule of Law"]
     dataEstimates.push(Object.values(data1))
     dataPilars.push(Object.getOwnPropertyNames(data1))
 
     for (var i = 0; i < dataEstimates[0].length; i++) {
-      data_list.push(parseFloat(dataEstimates[0][i]))
+      dataList.push(parseFloat(dataEstimates[0][i]))
     }
-    console.log(data_list);
+    console.log(dataList);
     // Scale the range of the data in the domains
-    x.domain(dataPilars.map(function(d) {console.log(d);
+    x.domain(dataAbr.map(function(d) {
+      console.log(d);
       return d;
     }));
-    y.domain([0, d3.max(data_list, function(d) {
-      return d * 2;
-    })])
+    y.domain([-3, 3])
 
     svg3.selectAll("bar")
-      .data(data_list)
+      .data(dataList)
       .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d, i) {
-        return 50 + (i * 100)
+        return 120 + (i * 107.5)
       })
       .attr("y", function(d, i) {
         if (d < 0) {
           return 300;
         } else {
-          return 300 - (d * 100);
+          return 300 - (d * 84);
         }
       })
       .attr("height", function(d, i) {
-        return Math.abs(d * 100);
+        return Math.abs(d * 84);
       })
       .attr("width", 30)
+      .style("fill", "red")
 
+
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
 
     svg3.append("g")
-      .attr("class", 'xaxis1')
-      .attr("transform", "translate(10," + 300 + ")")
-      .call(d3.svg.axis(xAxis));
+      .attr("width", "100")
+      .attr("class", 'xaxis')
+      .attr("transform", "translate(50," + 300 + ")")
+      .call((xAxis));
 
     // add the y Axis
     svg3.append("g")
-      .attr("class", 'yaxis1')
-      .attr("transform", "translate(100," + ")")
-      .call(d3.svg.axis(yAxis));
+      .attr("width", "100%")
+      .attr("class", 'yaxis')
+      .attr("transform", "translate(50," + 50 + ")")
+      .call((yAxis));
 
 
   }

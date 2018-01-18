@@ -1,0 +1,512 @@
+{
+  "Albania": {
+    "Tax": "15"
+  },
+  "Algeria": {
+    "Tax": "26"
+  },
+  "Andorra": {
+    "Tax": "10"
+  },
+  "Angola": {
+    "Tax": "30"
+  },
+  "Anguilla": {
+    "Tax": "0"
+  },
+  "Antigua and Barbuda": {
+    "Tax": "25"
+  },
+  "Argentina": {
+    "Tax": "35"
+  },
+  "Armenia": {
+    "Tax": "20"
+  },
+  "Aruba": {
+    "Tax": "25"
+  },
+  "Australia": {
+    "Tax": "30"
+  },
+  "Austria": {
+    "Tax": "25"
+  },
+  "Azerbaijan": {
+    "Tax": "20"
+  },
+  "Bahamas": {
+    "Tax": "0"
+  },
+  "Bahrain": {
+    "Tax": "0"
+  },
+  "Bangladesh": {
+    "Tax": "25"
+  },
+  "Barbados": {
+    "Tax": "25"
+  },
+  "Belarus": {
+    "Tax": "18"
+  },
+  "Belgium": {
+    "Tax": "33.99"
+  },
+  "Benin": {
+    "Tax": "30"
+  },
+  "Bermuda": {
+    "Tax": "0"
+  },
+  "Bolivia": {
+    "Tax": "25"
+  },
+  "Bonaire, Saint Eustatius and Saba": {
+    "Tax": "25"
+  },
+  "Bosnia and Herzegovina": {
+    "Tax": "10"
+  },
+  "Botswana": {
+    "Tax": "22"
+  },
+  "Brazil": {
+    "Tax": "34"
+  },
+  "Brunei Darussalam": {
+    "Tax": "18.5"
+  },
+  "Bulgaria": {
+    "Tax": "10"
+  },
+  "Burkina Faso": {
+    "Tax": "27.5"
+  },
+  "Burundi": {
+    "Tax": "30"
+  },
+  "Cambodia": {
+    "Tax": "20"
+  },
+  "Cameroon": {
+    "Tax": "33"
+  },
+  "Canada": {
+    "Tax": "26.5"
+  },
+  "Cayman Islands": {
+    "Tax": "0"
+  },
+  "Chile": {
+    "Tax": "25.5"
+  },
+  "China": {
+    "Tax": "25"
+  },
+  "Colombia": {
+    "Tax": "34"
+  },
+  "Congo (Democratic Republic of the)": {
+    "Tax": "35"
+  },
+  "Costa Rica": {
+    "Tax": "30"
+  },
+  "Croatia": {
+    "Tax": "20"
+  },
+  "Curacao": {
+    "Tax": "22"
+  },
+  "Cyprus": {
+    "Tax": "12.5"
+  },
+  "Czech Republic": {
+    "Tax": "19"
+  },
+  "Denmark": {
+    "Tax": "22"
+  },
+  "Djibouti": {
+    "Tax": "25"
+  },
+  "Dominica": {
+    "Tax": "25"
+  },
+  "Dominican Republic": {
+    "Tax": "27"
+  },
+  "Ecuador": {
+    "Tax": "22"
+  },
+  "Egypt": {
+    "Tax": "22.5"
+  },
+  "El Salvador": {
+    "Tax": "30"
+  },
+  "Estonia": {
+    "Tax": "20"
+  },
+  "Ethiopia": {
+    "Tax": "30"
+  },
+  "Fiji": {
+    "Tax": "20"
+  },
+  "Finland": {
+    "Tax": "20"
+  },
+  "France": {
+    "Tax": "33.33"
+  },
+  "Gabon": {
+    "Tax": "30"
+  },
+  "Gambia": {
+    "Tax": "31"
+  },
+  "Georgia": {
+    "Tax": "15"
+  },
+  "Germany": {
+    "Tax": "29.79"
+  },
+  "Ghana": {
+    "Tax": "25"
+  },
+  "Gibraltar": {
+    "Tax": "10"
+  },
+  "Greece": {
+    "Tax": "29"
+  },
+  "Grenada": {
+    "Tax": "30"
+  },
+  "Guatemala": {
+    "Tax": "25"
+  },
+  "Guernsey": {
+    "Tax": "0"
+  },
+  "Honduras": {
+    "Tax": "25"
+  },
+  "Hong Kong SAR": {
+    "Tax": "16.5"
+  },
+  "Hungary": {
+    "Tax": "9"
+  },
+  "Iceland": {
+    "Tax": "20"
+  },
+  "India": {
+    "Tax": "30"
+  },
+  "Indonesia": {
+    "Tax": "25"
+  },
+  "Iraq": {
+    "Tax": "15"
+  },
+  "Ireland": {
+    "Tax": "12.5"
+  },
+  "Isle of Man": {
+    "Tax": "0"
+  },
+  "Israel": {
+    "Tax": "24"
+  },
+  "Italy": {
+    "Tax": "24"
+  },
+  "Ivory Coast": {
+    "Tax": "25"
+  },
+  "Jamaica": {
+    "Tax": "25"
+  },
+  "Japan": {
+    "Tax": "30.86"
+  },
+  "Jersey": {
+    "Tax": "20"
+  },
+  "Jordan": {
+    "Tax": "20"
+  },
+  "Kazakhstan": {
+    "Tax": "20"
+  },
+  "Kenya": {
+    "Tax": "30"
+  },
+  "Korea, Republic of": {
+    "Tax": "22"
+  },
+  "Kuwait": {
+    "Tax": "15"
+  },
+  "Kyrgyzstan": {
+    "Tax": "10"
+  },
+  "Latvia": {
+    "Tax": "15"
+  },
+  "Lebanon": {
+    "Tax": "15"
+  },
+  "Libya": {
+    "Tax": "20"
+  },
+  "Liechtenstein": {
+    "Tax": "12.5"
+  },
+  "Lithuania": {
+    "Tax": "15"
+  },
+  "Luxembourg": {
+    "Tax": "27.08"
+  },
+  "Macau": {
+    "Tax": "12"
+  },
+  "Macedonia": {
+    "Tax": "10"
+  },
+  "Madagascar": {
+    "Tax": "20"
+  },
+  "Malawi": {
+    "Tax": "30"
+  },
+  "Malaysia": {
+    "Tax": "24"
+  },
+  "Malta": {
+    "Tax": "35"
+  },
+  "Mauritius": {
+    "Tax": "15"
+  },
+  "Mexico": {
+    "Tax": "30"
+  },
+  "Moldova": {
+    "Tax": "12"
+  },
+  "Monaco": {
+    "Tax": "33.33"
+  },
+  "Mongolia": {
+    "Tax": "25"
+  },
+  "Montenegro": {
+    "Tax": "9"
+  },
+  "Morocco": {
+    "Tax": "31"
+  },
+  "Mozambique": {
+    "Tax": "32"
+  },
+  "Myanmar": {
+    "Tax": "25"
+  },
+  "Namibia": {
+    "Tax": "32"
+  },
+  "Netherlands": {
+    "Tax": "25"
+  },
+  "New Zealand": {
+    "Tax": "28"
+  },
+  "Nicaragua": {
+    "Tax": "30"
+  },
+  "Nigeria": {
+    "Tax": "30"
+  },
+  "Norway": {
+    "Tax": "24"
+  },
+  "Oman": {
+    "Tax": "15"
+  },
+  "Pakistan": {
+    "Tax": "31"
+  },
+  "Palestinian Territory": {
+    "Tax": "15"
+  },
+  "Panama": {
+    "Tax": "25"
+  },
+  "Papua New Guinea": {
+    "Tax": "30"
+  },
+  "Paraguay": {
+    "Tax": "10"
+  },
+  "Peru": {
+    "Tax": "29.5"
+  },
+  "Philippines": {
+    "Tax": "30"
+  },
+  "Poland": {
+    "Tax": "19"
+  },
+  "Portugal": {
+    "Tax": "21"
+  },
+  "Qatar": {
+    "Tax": "10"
+  },
+  "Romania": {
+    "Tax": "16"
+  },
+  "Russia": {
+    "Tax": "20"
+  },
+  "Rwanda": {
+    "Tax": "30"
+  },
+  "Saint Kitts and Nevis": {
+    "Tax": "33"
+  },
+  "Saint Lucia": {
+    "Tax": "30"
+  },
+  "Saint Vincent and the Grenadines": {
+    "Tax": "32.5"
+  },
+  "Samoa": {
+    "Tax": "27"
+  },
+  "Saudi Arabia": {
+    "Tax": "20"
+  },
+  "Senegal": {
+    "Tax": "30"
+  },
+  "Serbia": {
+    "Tax": "15"
+  },
+  "Sierra Leone": {
+    "Tax": "30"
+  },
+  "Singapore": {
+    "Tax": "17"
+  },
+  "Sint Maarten (Dutch part)": {
+    "Tax": "34.5"
+  },
+  "Slovakia": {
+    "Tax": "21"
+  },
+  "Slovenia": {
+    "Tax": "19"
+  },
+  "Solomon Islands": {
+    "Tax": "30"
+  },
+  "South Africa": {
+    "Tax": "28"
+  },
+  "Spain": {
+    "Tax": "25"
+  },
+  "Sri Lanka": {
+    "Tax": "28"
+  },
+  "St Maarten": {
+    "Tax": "34.5"
+  },
+  "Sudan": {
+    "Tax": "35"
+  },
+  "Suriname": {
+    "Tax": "36"
+  },
+  "Swaziland": {
+    "Tax": "27.5"
+  },
+  "Sweden": {
+    "Tax": "22"
+  },
+  "Switzerland": {
+    "Tax": "17.77"
+  },
+  "Syria": {
+    "Tax": "28"
+  },
+  "Taiwan": {
+    "Tax": "17"
+  },
+  "Tanzania": {
+    "Tax": "30"
+  },
+  "Thailand": {
+    "Tax": "20"
+  },
+  "Trinidad and Tobago": {
+    "Tax": "25"
+  },
+  "Tunisia": {
+    "Tax": "25"
+  },
+  "Turkey": {
+    "Tax": "20"
+  },
+  "Turkmenistan": {
+    "Tax": "20"
+  },
+  "Turks and Caicos Islands": {
+    "Tax": "0"
+  },
+  "Uganda": {
+    "Tax": "30"
+  },
+  "Ukraine": {
+    "Tax": "18"
+  },
+  "United Arab Emirates": {
+    "Tax": "55"
+  },
+  "United Kingdom": {
+    "Tax": "19"
+  },
+  "United States": {
+    "Tax": "40"
+  },
+  "Uruguay": {
+    "Tax": "25"
+  },
+  "Uzbekistan": {
+    "Tax": "7.5"
+  },
+  "Vanuatu": {
+    "Tax": "0"
+  },
+  "Venezuela": {
+    "Tax": "34"
+  },
+  "Vietnam": {
+    "Tax": "20"
+  },
+  "Yemen": {
+    "Tax": "20"
+  },
+  "Zambia": {
+    "Tax": "35"
+  },
+  "Zimbabwe": {
+    "Tax": "25"
+  }
+}
