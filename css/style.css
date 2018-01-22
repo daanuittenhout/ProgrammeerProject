@@ -37,8 +37,16 @@ body {
 #legend {
   background: orange
 }
-#checkbox {
+#checkboxes {
   background: green
+}
+table,
+table td {
+    font-weight: bold;
+    background-color: #fff;
+    border-collapse: separate;
+    border-spacing: 0px; /* This line */
+    border: 1px solid #b8202a;
 }
 #slider {
   background: brown

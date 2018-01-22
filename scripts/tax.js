@@ -1,13 +1,14 @@
 window.onload = function(e) {
-
-  var body = d3.select("body")
-    .append("div")
-    .attr("id", "legend");
+  //
+  // var body = d3.select("body")
+  //   .append("div")
+  //   .attr("id", "legend");
   var scrollable = d3.select("#scrollable");
 
   var h = 500,
-    w = 1000;
+      w = 1000;
   fill = "100%"
+
   var x = d3.scale.ordinal().rangeRoundBands([0, 300], 1);
 
   var y = d3.scale.linear().range([400, 0]);
@@ -48,12 +49,12 @@ window.onload = function(e) {
 
   var y = d3.scale.linear()
     .range([h, 0]);
-
-  var tool = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .attr("height", 30)
-    .attr("width", 30)
-    .style("opacity", 0);
+  //
+  // var tool = d3.select("body").append("div")
+  //   .attr("class", "tooltip")
+  //   .attr("height", 30)
+  //   .attr("width", 30)
+  //   .style("opacity", 0);
   d3.json("../data/corTax1.json", function(data) {
     var basic = new Datamap({
       element: document.getElementById("map"),
@@ -191,7 +192,15 @@ window.onload = function(e) {
         return Math.abs(d * 84);
       })
       .attr("width", 30)
-      .style("fill", "red")
+      .style("fill", function(d){
+          if (d < 0) {
+            return "red";
+          }
+          else{
+            return "green"
+          }
+
+      })
 
 
     var xAxis = d3.svg.axis()
@@ -217,32 +226,35 @@ window.onload = function(e) {
 
 
   }
-  console.log(year1);
-  // var basic_choropleth = new Datamap({
-  //   element: document.getElementById("map"),
-  //   projection: 'mercator',
-  //   fills: {
-  //     defaultFill: "#ABDDA4",
-  //     authorHasTraveledTo: "#fa0fa0"
-  //   },
-  //   data: {
-  //     USA: { fillKey: "authorHasTraveledTo" },
-  //     JPN: { fillKey: "authorHasTraveledTo" },
-  //     ITA: { fillKey: "authorHasTraveledTo" },
-  //     CRI: { fillKey: "authorHasTraveledTo" },
-  //     KOR: { fillKey: "authorHasTraveledTo" },
-  //     DEU: { fillKey: "authorHasTraveledTo" },
-  //   }
-  // });
-  //
-  // var colors = d3.scale.category10();
-  //
-  //
-  // window.setInterval(function() {
-  //   d3.select("datamap").attr("width", "60%");
-  //   basic_choropleth.updateChoropleth({
-  //
-  //   });
-  // }, 2000);
+  function tableCreate() {
+    var body = document.getElementById("checkboxes")
+    var tbl = document.createElement('table');
+    tbl.style.width = '100%';
+    tbl.style.height = '25%';
+    tbl.setAttribute('border', '1');
+    var tbdy = document.createElement('tbody');
+    for (var i = 0; i < 10; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < 6; j++) {
+            if (i == 0) {
+                var th = document.createElement('th');
+                th.appendChild(document.createTextNode('\u0020'))
+            }
+            else if (i == 10 && j == 6) {
+              break
+            }
+            else {
+                var td = document.createElement('td');
+                td.appendChild(document.createTextNode('\u0020'))
+                // i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
+                tr.appendChild(td)
+            }
+        } 
+        tbdy.appendChild(tr);
+    }
+    tbl.appendChild(tbdy);
+    body.appendChild(tbl)
+}
+tableCreate()
 
 }
