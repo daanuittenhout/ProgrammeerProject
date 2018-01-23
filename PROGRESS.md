@@ -10,3 +10,8 @@ interactivity with map and slider
 - 18/01
 tooltip
 start checkboxes
+- 19/01
+bar ready
+- 22/01
+data checkboxes sorted out
+- 23/01

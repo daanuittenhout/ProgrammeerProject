@@ -6,7 +6,7 @@ window.onload = function(e) {
   var scrollable = d3.select("#scrollable");
 
   var h = 500,
-      w = 1000;
+    w = 1000;
   fill = "100%"
 
   var x = d3.scale.ordinal().rangeRoundBands([0, 300], 1);
@@ -28,7 +28,7 @@ window.onload = function(e) {
     .attr("class", "svg2")
 
   var color = d3.scale.linear()
-    .domain([0,55])
+    .domain([0, 55])
     .range(["#BBDEFB", "#0D47A1"])
 
 
@@ -169,7 +169,7 @@ window.onload = function(e) {
     console.log(dataList);
     // Scale the range of the data in the domains
     x.domain(dataAbr.map(function(d) {
-      console.log(d);
+      // if dataList.values;
       return d;
     }));
     y.domain([-3, 3])
@@ -192,13 +192,12 @@ window.onload = function(e) {
         return Math.abs(d * 84);
       })
       .attr("width", 30)
-      .style("fill", function(d){
-          if (d < 0) {
-            return "red";
-          }
-          else{
-            return "green"
-          }
+      .style("fill", function(d) {
+        if (d < 0) {
+          return "red";
+        } else {
+          return "green"
+        }
 
       })
 
@@ -226,6 +225,7 @@ window.onload = function(e) {
 
 
   }
+
   function tableCreate() {
     var body = document.getElementById("checkboxes")
     var tbl = document.createElement('table');
@@ -234,27 +234,52 @@ window.onload = function(e) {
     tbl.setAttribute('border', '1');
     var tbdy = document.createElement('tbody');
     for (var i = 0; i < 10; i++) {
-        var tr = document.createElement('tr');
-        for (var j = 0; j < 6; j++) {
-            if (i == 0) {
-                var th = document.createElement('th');
-                th.appendChild(document.createTextNode('\u0020'))
-            }
-            else if (i == 10 && j == 6) {
-              break
-            }
-            else {
-                var td = document.createElement('td');
-                td.appendChild(document.createTextNode('\u0020'))
-                // i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
-                tr.appendChild(td)
-            }
-        } 
-        tbdy.appendChild(tr);
+      var tr = document.createElement('tr');
+      for (var j = 0; j < 6; j++) {
+        if (i == 0) {
+          var th = document.createElement('th');
+          th.appendChild(document.createTextNode('\u0020'))
+        } else if (i == 10 && j == 6) {
+          break
+        } else {
+          var td = document.createElement('td');
+          td.setAttribute("id", "id" + String(j))
+          td.appendChild(document.createTextNode('\u0020'))
+          // i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
+          tr.appendChild(td)
+        }
+
+        // td.append(document.getElementById("checkboxes").appendChild(newInput))
+      }
+      tbdy.appendChild(tr);
     }
     tbl.appendChild(tbdy);
     body.appendChild(tbl)
-}
-tableCreate()
+  }
+  tableCreate()
+  var label = document.createElement("LABEL")
+  for (var q = 0; q < 5; q++) {
+    newInput = document.createElement("INPUT");
+    newInput.setAttribute("type", "radio");
+    newInput.setAttribute("name", "optradio");
+    newInput.setAttribute("value", q + 1);
+    newInput.setAttribute("id", "radio")
+
+    // var row = document.getElementById("tr");
+    // var r = row.insertCell(1);
+    // r.innerHTML = newInput;
+
+    // newInput.setAttribute("class", "radio-inline")
+    for (var i = 0; i < 10; i++) {
+      document.getElementById("id" + String(q + 1)).append(document.getElementById("checkboxes").appendChild(newInput))
+    }
+  }
+
+  d3.selectAll("#radio").on("click", function(d) {
+    console.log(this.value);
+  })
+  d3.select("#gobutton").on("click", function(d, error){
+    // if (data.rank == d3.selectAll("#")
+  })
 
 }
