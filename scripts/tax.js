@@ -243,7 +243,7 @@ window.onload = function(e) {
           break
         } else {
           var td = document.createElement('td');
-          td.setAttribute("id", "id" + String(j))
+          td.setAttribute("id", "id" + String(i) + String(j))
           td.appendChild(document.createTextNode('\u0020'))
           // i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
           tr.appendChild(td)
@@ -257,35 +257,70 @@ window.onload = function(e) {
     body.appendChild(tbl)
   }
   tableCreate()
-  for (var i = 0; i < 1; i++) {
-    d3.selectAll("#id0").append("text").text(String(1))
+  for (var i = 0; i < 10; i++) {
+    d3.selectAll("#id" + i + 0).append("text").text(String(i))
   }
   var label = document.createElement("LABEL")
   for (var p = 0; p < 9; p++) {
 
-  for (var q = 0; q < 5; q++) {
-    newInput = document.createElement("INPUT");
-    newInput.setAttribute("type", "radio");
-    newInput.setAttribute("name", "optradio");
-    newInput.setAttribute("value", q + 1);
-    newInput.setAttribute("id", "radio")
+    for (var q = 0; q < 5; q++) {
 
-    // var row = document.getElementById("tr");
-    // var r = row.insertCell(1);
-    // r.innerHTML = newInput;
+      newInput = document.createElement("INPUT");
+      newInput.setAttribute("type", "radio");
+      newInput.setAttribute("name", "optradio" + p);
+      newInput.setAttribute("value", q + 1);
+      newInput.setAttribute("id", "radio" + p + q)
+      document.getElementById("id" + String(p + 1) + String(q + 1)).append(newInput)
 
-    // newInput.setAttribute("class", "radio-inline")
-    for (var i = 0; i < 10; i++) {
-      document.getElementById("id" + String(q + 1)).append(document.getElementById("checkboxes").appendChild(newInput))
+
+
     }
   }
-}
 
-  d3.selectAll("#radio").on("click", function(d) {
+  d3.selectAll("#radio00").on("click", function(d) {
     console.log(this.value);
   })
-  d3.select("#gobutton").on("click", function(d, error){
-    // if (data.rank == d3.selectAll("#")
+  d3.select("#gobutton").on("click", function(d, error) {
+    var count = 0;
+    lists = ["Minwage", "English", "ChildLabour", "Environment", "Education",
+      "Inovation", "Infrastructure", "ICTAcces", "TaxRate"
+    ]
+
+    for (var i = 0; i < 45; i++) {
+      if (document.getElementsByTagName("INPUT")[i].checked == true) {
+        count++
+      }
+    }
+    if (count < 9) {
+      alert("vul in bitch");
+    } else {
+      d3.json("./data/ranks.json", function(data) {
+        results = []
+        r = 0
+        for (var i = 0; i < 45; i++) {
+          if (i % 5 == 0){
+            r = r + 1
+          }
+          if (document.getElementsByTagName("INPUT")[i].checked == true) {
+            // console.log(lists);
+            results.push(data[lists[r - 1]][document.getElementsByTagName("INPUT")[i].getAttribute("value")])
+            // console.log(r);
+          }
+        }
+        allresults = [results[0]]
+        for (var i = 0; i < results.length; i++) {
+          allresults.concat(results[i+1])
+
+        }
+        allresults.concat(results)
+
+        console.log(allresults);
+      })
+      console.log(d3.select("#radio00").value)
+      console.log(d3.selectAll("optradio2"));
+      console.log("hoi");
+      console.log(document.getElementsByName("optradio1").value);
+    }
   })
 
 }
