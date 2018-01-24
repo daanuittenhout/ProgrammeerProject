@@ -309,7 +309,7 @@ window.onload = function(e) {
         }
         allresults = [results[0]]
         for (var i = 0; i < results.length; i++) {
-          allresults.concat(results[i+1])
+          allresults = results[0].concat(results[i+1])
 
         }
         allresults.concat(results)
