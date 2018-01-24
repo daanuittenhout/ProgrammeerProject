@@ -55,7 +55,7 @@ window.onload = function(e) {
   //   .attr("height", 30)
   //   .attr("width", 30)
   //   .style("opacity", 0);
-  d3.json("../data/corTax1.json", function(data) {
+  d3.json("./data/corTax1.json", function(data) {
     var basic = new Datamap({
       element: document.getElementById("map"),
       projection: 'mercator',
@@ -257,7 +257,12 @@ window.onload = function(e) {
     body.appendChild(tbl)
   }
   tableCreate()
+  for (var i = 0; i < 1; i++) {
+    d3.selectAll("#id0").append("text").text(String(1))
+  }
   var label = document.createElement("LABEL")
+  for (var p = 0; p < 9; p++) {
+
   for (var q = 0; q < 5; q++) {
     newInput = document.createElement("INPUT");
     newInput.setAttribute("type", "radio");
@@ -274,6 +279,7 @@ window.onload = function(e) {
       document.getElementById("id" + String(q + 1)).append(document.getElementById("checkboxes").appendChild(newInput))
     }
   }
+}
 
   d3.selectAll("#radio").on("click", function(d) {
     console.log(this.value);
