@@ -308,10 +308,10 @@ window.onload = function(e) {
           }
         }
         allresults = [results[0]]
-        for (var i = 0; i < results.length; i++) {
-          allresults = results[0].concat(results[i+1])
+        // for (var i = 0; i < results.length; i++) {
+        allresults.concat(results[0], results[1],results[2], results[3], results[4], results[5], results[6], results[7], results[8])
 
-        }
+        // }
         allresults.concat(results)
 
         console.log(allresults);
