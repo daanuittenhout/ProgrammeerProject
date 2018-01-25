@@ -6,8 +6,11 @@ window.onload = function(e) {
   var scrollable = d3.select("#scrollable");
 
   var h = 500,
-    w = 1000;
-  fill = "100%"
+    w = 1000,
+    fill = "100%",
+    height = 500
+  width = 300
+
 
   var x = d3.scale.ordinal().rangeRoundBands([0, 300], 1);
 
@@ -38,27 +41,44 @@ window.onload = function(e) {
 
   var svg2 = d3.select("#flower").append("svg")
     .attr("height", h)
-    .attr("width", fill);
+    .attr("width", fill)
+    .attr("id", "pie")
+    .append('g') //create a group to hold our pie chart
+    .attr('transform', 'translate(' + (width / 2) +
+      ',' + (height / 2) + ')'); //move the center of the pie chart from 0, 0 to specified value
 
   var svg3 = d3.select("#bar").append("svg")
     .attr("height", 600)
     .attr("width", fill);
+
+  var svg4 = d3.select("#bar1").append("svg")
+    .attr("height", 600)
+    .attr("width", fill);
+
 
   var x = d3.scale.ordinal()
     .rangeRoundBands([0, 600], .5);
 
   var y = d3.scale.linear()
     .range([h, 0]);
-  //
-  // var tool = d3.select("body").append("div")
-  //   .attr("class", "tooltip")
-  //   .attr("height", 30)
-  //   .attr("width", 30)
-  //   .style("opacity", 0);
+  var radius = 300 / 2; //radius of the pie-chart
+  var colour = d3.scale.category20b(); //builtin range of colors
+
+
+
   d3.json("./data/corTax1.json", function(data) {
-    var basic = new Datamap({
-      element: document.getElementById("map"),
+
+    var map = new Datamap({
+      element: document.getElementById("map2"),
       projection: 'mercator',
+      fills: {
+        defaultFill: "#ABDDA4",
+        lowvalue: "#BBDEFB",
+        "RUS": "blue",
+        highvalue: "#AB18ED",
+        middle: "#AB18ED"
+      },
+
       geographyConfig: {
         highlightBorderColor: '#bada55',
         popupTemplate: function(geography, d) {
@@ -76,13 +96,26 @@ window.onload = function(e) {
           ].join('');
         },
         highlightBorderWidth: 3
-      },
-      fills: {
-        defaultFill: "#ABDDA4",
-        "Tax": "red",
-      },
+      }
+      // fills: {
+      //   // defaultFill: "#ABDDA4",
+      //   lowvalue : "#BBDEFB",
+      //   RUS : "blue",
+      //   highvalue : "#AB18ED",
+      //   middle : "#AB18ED"
+      // },
+      // data : {
+      //   USA : {fillkey:'lowvalue'}
+      // }
+
 
     });
+    d3.json("./data/colors.json", function(data) {
+      map.updateChoropleth(data)
+    })
+
+
+
   })
   // d3.json("../data/corTax1.json", function(data) {
   //   d3.selectAll('.datamaps-subunit').on("mouseover", function(d) {
@@ -129,18 +162,24 @@ window.onload = function(e) {
     d3.select("#year").on("input", function() {
       year1 = this.value
       title.text(year1)
-      data1 = data[String(year1)][String(countrycode)]
-      updatebar(data1, country, year1, x, y)
+      if (typeof countrycode != "undefined") {
+        data1 = data[String(year1)][String(countrycode)]
+        updatebar(data1, country, year1, x, y)
+
+      }
     })
     d3.selectAll('.datamaps-subunit').on("click", function(d, dataBar) {
       $('html,body').animate({
         scrollTop: $("#slider").offset().top
       }, 'slow')
-      country = d["properties"]["name"]
-      countrycode = d["id"];
-      console.log(country);
-      data1 = data[String(year1)][String(countrycode)]
-      updatebar(data1, country, year1, x, y)
+      if (d["id"] != "") {
+
+        country = d["properties"]["name"]
+        countrycode = d["id"];
+        console.log(country);
+        data1 = data[String(year1)][String(countrycode)]
+        updatebar(data1, country, year1, x, y)
+      }
       // d3.event.stopPropagation();
     });
 
@@ -260,25 +299,37 @@ window.onload = function(e) {
   for (var i = 0; i < 10; i++) {
     d3.selectAll("#id" + i + 0).append("text").text(String(i))
   }
-  var label = document.createElement("LABEL")
-  for (var p = 0; p < 9; p++) {
 
-    for (var q = 0; q < 5; q++) {
-
-      newInput = document.createElement("INPUT");
-      newInput.setAttribute("type", "radio");
-      newInput.setAttribute("name", "optradio" + p);
-      newInput.setAttribute("value", q + 1);
-      newInput.setAttribute("id", "radio" + p + q)
-      document.getElementById("id" + String(p + 1) + String(q + 1)).append(newInput)
+  function radiobutt() {
 
 
+    for (var p = 0; p < 9; p++) {
 
+      for (var q = 0; q < 5; q++) {
+
+        newInput = document.createElement("INPUT");
+        newInput.setAttribute("type", "radio");
+        newInput.setAttribute("name", "optradio" + p);
+        newInput.setAttribute("value", q + 1);
+        newInput.setAttribute("id", "radio" + p + q)
+        newInput.setAttribute("class", "radio")
+        document.getElementById("id" + String(p + 1) + String(q + 1)).append(newInput)
+
+
+
+      }
     }
   }
+  radiobutt()
 
   d3.selectAll("#radio00").on("click", function(d) {
     console.log(this.value);
+  })
+  d3.select("#resetbutton").on("click", function(d) {
+    d3.selectAll(".flower").remove()
+    d3.selectAll(".radio").remove()
+    radiobutt()
+
   })
   d3.select("#gobutton").on("click", function(d, error) {
     var count = 0;
@@ -286,7 +337,7 @@ window.onload = function(e) {
       "Inovation", "Infrastructure", "ICTAcces", "TaxRate"
     ]
 
-    for (var i = 0; i < 45; i++) {
+    for (var i = 0; i < 46; i++) {
       if (document.getElementsByTagName("INPUT")[i].checked == true) {
         count++
       }
@@ -294,32 +345,129 @@ window.onload = function(e) {
     if (count < 9) {
       alert("vul in bitch");
     } else {
+      $('html,body').animate({
+        scrollTop: $("#flower").offset().top
+      }, 'slow')
       d3.json("./data/ranks.json", function(data) {
         results = []
         r = 0
         for (var i = 0; i < 45; i++) {
-          if (i % 5 == 0){
-            r = r + 1
+          if (i % 5 == 0) {
+            r++
+            // console.log(r, i);
           }
           if (document.getElementsByTagName("INPUT")[i].checked == true) {
             // console.log(lists);
             results.push(data[lists[r - 1]][document.getElementsByTagName("INPUT")[i].getAttribute("value")])
-            // console.log(r);
+            // console.log(data[lists[7]][document.getElementsByTagName("INPUT")[i].getAttribute("value")]);
           }
         }
-        allresults = [results[0]]
-        // for (var i = 0; i < results.length; i++) {
-        allresults.concat(results[0], results[1],results[2], results[3], results[4], results[5], results[6], results[7], results[8])
+        for (var i = 35; i < 40; i++) {
+          if (document.getElementsByTagName("INPUT")[i].checked == true) {
+            results.push(data[lists[7]][document.getElementsByTagName("INPUT")[i].getAttribute("value")])
+            console.log(data[lists[7]][document.getElementsByTagName("INPUT")[i].getAttribute("value")]);
 
-        // }
-        allresults.concat(results)
+          }
+        }
 
-        console.log(allresults);
+
+        function flatten(arr) {
+          return arr.reduce(function(flat, toFlatten) {
+            return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+          }, []);
+        }
+        allResults = flatten(results)
+        var counts = {}; //We are going to count occurrence of item here
+        var compare = 0; //We are going to compare using stored value
+        var mostFrequent;
+        console.log(allResults);
+        var counter = 0
+        for (var i = 0, len = allResults.length; i < len; i++) {
+          var word = allResults[i];
+          if (counts[word] === undefined) { //if count[word] doesn't exist
+            counts[word] = 1; //set count[word] value to 1
+          } else { //if exists
+            counts[word] = counts[word] + 1; //increment existing value
+          }
+          if (counts[word] > compare) { //counts[word] > 0(first time)
+            compare = counts[word]; //set compare to counts[word]
+            mostFrequent = allResults[i]; //set mostFrequent value
+          }
+        }
+        console.log(mostFrequent);
+        console.log(counts);
+
+        function sortProperties(obj) {
+          // convert object into array
+          var sortable = [];
+          for (var key in obj)
+            if (obj.hasOwnProperty(key))
+              sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+
+          // sort items by value
+          sortable.sort(function(a, b) {
+            return b[1] - a[1]; // compare numbers
+          });
+          return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+        }
+        var total = 0;
+        var sortedCountries = sortProperties(counts)
+        for (var i = 0; i < sortedCountries.slice(0, 5).length; i++) {
+          total += sortedCountries.slice(0, 5)[i][1]
+        }
+        countriestop = []
+        console.log(total);
+        percentages = []
+        for (var i = 0; i < sortedCountries.slice(0, 5).length; i++) {
+          percentages.push((sortedCountries.slice(0, 5)[i][1] / total) * 100)
+          countriestop.push(sortedCountries.slice(0, 5)[i][0])
+        }
+        console.log(countriestop);
+        console.log(percentages);
+
+        var colour = d3.scale.category20c();
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-10, 0])
+          .html(function(d, i) {
+            return "<strong>Country:</strong> <span style='color:red'>" + countriestop[i] + "</span>";
+          })
+        var tip1 = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-100, 0])
+          .html(function(d, i) {
+            return "<strong>hoi:</strong> <span style='color:red'>" + Math.round(((sortedCountries.slice(0, 5)[i][1] / 9) * 100), 2) + "</span>";
+          })
+        var arc = d3.svg.arc().outerRadius(radius);
+        var pie = d3.layout.pie()
+          .value(function(d, i) {
+            return percentages[i];
+          })
+          .sort(null);
+        svg.call(tip1);
+        svg.call(tip);
+        var path = svg2.selectAll("path")
+          .data(pie(percentages))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d, i) {
+            return colour(i);
+          })
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide)
+          .on("click", tip1.show)
+
+
+          
+
+        // console.log(allResults);
+        // console.log(sortedCountries[-5][0]);
       })
-      console.log(d3.select("#radio00").value)
-      console.log(d3.selectAll("optradio2"));
-      console.log("hoi");
-      console.log(document.getElementsByName("optradio1").value);
+      d3.selectAll("path").on("click", function(d, i) {
+        return svg3.select("#bar").html("heuuuuu");
+        console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+      })
     }
   })
 

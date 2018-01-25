@@ -40,6 +40,9 @@ body {
 #checkboxes {
   background: green
 }
+th{
+  text-align: center;
+}
 table,
 table td {
     font-weight: bold;
@@ -58,7 +61,7 @@ table td {
   background: red
 }
 #flower{
-  background: yellow
+  background: white;
 }
 #bar {
   background: white
