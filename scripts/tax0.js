@@ -1,10 +1,10 @@
 window.onload = function(e) {
 
   h = 500,
-  w = 1000,
-  fill = "100%",
-  height = 500,
-  width = 300;
+    w = 1000,
+    fill = "100%",
+    height = 500,
+    width = 300;
 
   x = d3.scale.ordinal().rangeRoundBands([0, 300], 1);
 
@@ -46,6 +46,17 @@ window.onload = function(e) {
     .attr("height", "100%")
 
   year1 = 2003
+
+  var colour = d3.scale.category20c();
+
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d, i) {
+      return "<strong>Country:</strong> <span style='color:red'>" + countriestop[i] + "</span>";
+    })
+
+  var arc = d3.svg.arc().outerRadius(radius);
 
   d3.select("#slider").insert("p", ":first-child").append("input")
     .attr("type", "range")
@@ -175,32 +186,16 @@ window.onload = function(e) {
           }
         }
 
-
         allResults = flatten(results)
-
-        var counts = {}; //We are going to count occurrence of item here
-        var compare = 0; //We are going to compare using stored value
-        var mostFrequent;
-        var counter = 0
-
-        for (var i = 0, len = allResults.length; i < len; i++) {
-          var word = allResults[i];
-          if (counts[word] === undefined) { //if count[word] doesn't exist
-            counts[word] = 1; //set count[word] value to 1
-          } else { //if exists
-            counts[word] = counts[word] + 1; //increment existing value
-          }
-          if (counts[word] > compare) { //counts[word] > 0(first time)
-            compare = counts[word]; //set compare to counts[word]
-            mostFrequent = allResults[i]; //set mostFrequent value
-          }
-        }
+        counts = {}; //We are going to count occurrence of item here
+        frequency(allResults)
 
         var total = 0;
         var sortedCountries = sortProperties(counts)
         for (var i = 0; i < sortedCountries.slice(0, 5).length; i++) {
           total += sortedCountries.slice(0, 5)[i][1]
         }
+        
         countriestop = []
 
         percentages = []
@@ -208,27 +203,11 @@ window.onload = function(e) {
           percentages.push((sortedCountries.slice(0, 5)[i][1] / total) * 100)
           countriestop.push(sortedCountries.slice(0, 5)[i][0])
         }
-
-        var colour = d3.scale.category20c();
-        var tip = d3.tip()
-          .attr('class', 'd3-tip')
-          .offset([-10, 0])
-          .html(function(d, i) {
-            return "<strong>Country:</strong> <span style='color:red'>" + countriestop[i] + "</span>";
-          })
-        var tip1 = d3.tip()
-          .attr('class', 'd3-tip')
-          .offset([-100, 0])
-          .html(function(d, i) {
-            return "<strong>hoi:</strong> <span style='color:red'>" + Math.round(((sortedCountries.slice(0, 5)[i][1] / 9) * 100), 2) + "</span>";
-          })
-        var arc = d3.svg.arc().outerRadius(radius);
         var pie = d3.layout.pie()
           .value(function(d, i) {
             return percentages[i];
           })
           .sort(null);
-        svg.call(tip);
         svg.call(tip);
 
         var path = svg2.selectAll("path")

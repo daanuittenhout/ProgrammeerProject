@@ -38,7 +38,7 @@ body {
 }
 
 .datamap {
-  background: red width: 100%
+  width: 100%
 }
 
 #header {
@@ -46,11 +46,12 @@ body {
 }
 
 #checkboxes {
-  background: white
-  text-align: left
+  background: white;
 }
 ol {
-    text-align: left
+    text-align: left;
+    font: 15px sans-serif;
+    font-weight: bold;
 }
 
 th {

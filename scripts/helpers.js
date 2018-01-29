@@ -133,6 +133,26 @@
       return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
     }, []);
   }
+  function frequency(array) {
+
+    var compare = 0; //We are going to compare using stored value
+    var mostFrequent;
+    var counter = 0
+
+    for (var i = 0, len = array.length; i < len; i++) {
+      var word = array[i];
+      if (counts[word] === undefined) { //if count[word] doesn't exist
+        counts[word] = 1; //set count[word] value to 1
+      } else { //if exists
+        counts[word] = counts[word] + 1; //increment existing value
+      }
+      if (counts[word] > compare) { //counts[word] > 0(first time)
+        compare = counts[word]; //set compare to counts[word]
+        mostFrequent = array[i]; //set mostFrequent value
+      }
+    }
+    return counts;
+  }
 
   function sortProperties(obj) {
     // convert object into array
