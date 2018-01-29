@@ -96,7 +96,7 @@ window.onload = function(e) {
   })
 
 
-  d3.json("../data/dataBar1.json", function(data) {
+  d3.json("./data/dataBar1.json", function(data) {
     dataBar = data
     d3.select("#year").on("input", function() {
       year1 = this.value
