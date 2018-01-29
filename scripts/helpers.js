@@ -154,6 +154,7 @@
     return counts;
   }
 
+
   function sortProperties(obj) {
     // convert object into array
     var sortable = [];
@@ -166,4 +167,18 @@
       return b[1] - a[1]; // compare numbers
     });
     return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+  }
+  function sliceup(sortedArray, top) {
+
+
+    for (var i = 0; i < sortedArray.slice(0, top).length; i++) {
+      total += sortedArray.slice(0, 5)[i][1]
+    }
+
+
+    for (var i = 0; i < sortedArray.slice(0, top).length; i++) {
+      percentages.push((sortedArray.slice(0, top)[i][1] / total) * 100)
+      countriestop.push(sortedArray.slice(0, top)[i][0])
+    }
+    return percentages, countriestop;
   }

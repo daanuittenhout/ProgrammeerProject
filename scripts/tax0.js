@@ -174,7 +174,6 @@ window.onload = function(e) {
         for (var i = 0; i < 45; i++) {
           if (i % 5 == 0) {
             r++
-            // console.log(r, i);
           }
           if (document.getElementsByTagName("INPUT")[i].checked == true) {
             results.push(data[lists[r - 1]][document.getElementsByTagName("INPUT")[i].getAttribute("value")])
@@ -190,19 +189,12 @@ window.onload = function(e) {
         counts = {}; //We are going to count occurrence of item here
         frequency(allResults)
 
-        var total = 0;
         var sortedCountries = sortProperties(counts)
-        for (var i = 0; i < sortedCountries.slice(0, 5).length; i++) {
-          total += sortedCountries.slice(0, 5)[i][1]
-        }
-        
+        total = 0;
         countriestop = []
-
         percentages = []
-        for (var i = 0; i < sortedCountries.slice(0, 5).length; i++) {
-          percentages.push((sortedCountries.slice(0, 5)[i][1] / total) * 100)
-          countriestop.push(sortedCountries.slice(0, 5)[i][0])
-        }
+        sliceup(sortedCountries, 5)
+
         var pie = d3.layout.pie()
           .value(function(d, i) {
             return percentages[i];
@@ -222,9 +214,8 @@ window.onload = function(e) {
           .on('mouseover', tip.show)
           .on('mouseout', tip.hide)
           .on("click", function(d, i) {
-            // d3.selectAll("#fillgauge1").remove()
-            d3.selectAll("#match1").remove()
 
+            d3.selectAll("#match1").remove()
             var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(((sortedCountries.slice(0, 5)[i][1] / 9) * 100), 2));
             var config1 = liquidFillGaugeDefaultSettings();
             config1.circleColor = "#FF7777";
