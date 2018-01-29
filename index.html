@@ -5,54 +5,59 @@
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://d3js.org/d3-axis.v1.min.js"></script>
 	<link rel="shortcut icon" href="doc/icon.ico"></link>
 	<script type="text/javascript" src="libs/d3.v3.js" charset="utf-8"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="map/map.js"></script>
-	<script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
 	<script type="text/javascript" src="libs/queue.v1.min.js" charset="utf-8"></script>
-	<script type="text/javascript" src="libs/datamaps.world.hires.min.js" charset="utf-8"></script>
-	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="//d3js.org/topojson.v1.min.js"></script>
-	<script src="https://d3js.org/topojson.v2.min.js"></script>
-	<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
-	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-	<script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
-	<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-	<script type="text/javascript" src="scripts/tax.js"></script>
+	<script type="text/javascript" src="libs/d3tooltip.js" charset="utf-8"></script>
+	<script type="text/javascript" src="map/datamaps.world.hires.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="scripts/helpers.js"></script>
+	<script type="text/javascript" src="scripts/match.js"></script>
+	<script type="text/javascript" src="scripts/tax0.js"></script>
 
 
 </head>
 
 <body>
-	<div class="container-fluid">
-		<div class="jumbotron">
-			<h1 align="center">Titel</h1>
-			<p align="center">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+	<div class="container-fluid bg-1 text-center">
+		<h3 class="margin">Where should you start your business?</h3>
+		<img src="doc/bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="500" height="500">
+		<h3>Find out now and click <button type="button" class="btn" id="herebutton">here</button></h3>
+	</div>
+	<div class="container-fluid bg-2 text-center">
+		<div class="row">
+			<div class="col-md-12" id="header">
+			<h1 id="header" align="center">Corporate Tax rate around the world</h1>
+			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-1" id="header">header</div>
-		</div>
-		<div class="row">
-			<div class="col-md-11" id="map2"></div>
+			<div class="col-lg-11" id="map2"></div>
 			<div class="col-md-0" id="map1"></div>
 		</div>
+	</div>
 		<div class="row">
-			<div class="col-md-8" id="slider">slider</div>
-			<div class="col-md-2" id="gobutton" align="center">
-				<button type="button" class="btn btn-success">GO</button>
-			</div>
-			<div class="col-md-2" id="resetbutton" align="center">
-				<button type="button" class="btn btn-danger">RESET</button>
-			</div>
+			<div class="col-md-6" id="slider">slider</div>
+
 
 		</div>
 		<div class="row">
 			<div class="col-md-6" id="bar">bar</div>
 			<div class="col-md-6" id="checkboxes">
+				<ol>
+					<li>A high minimum wage is?</li>
+					<li>A high percentage of English speaking inhabitants is? </li>
+					<li>The lack of child labour is?</li>
+					<li>A Government that protects the environment is?</li>
+					<li>A highly educaded workforce is?</li>
+					<li>A high level of innovation is?</li>
+					<li>A high quality of infrastructure is?</li>
+					<li>A high ICT-acces level is?</li>
+					<li>The tax rate should be low/high?</li>
+
+				</ol>
+				<button type="button" class="btn btn-success" id="gobutton">GO</button>
+				<button type="button" class="btn btn-danger" id="resetbutton">RESET</button>
 				<table class="table">
 					<thead>
 						<tr>
@@ -76,58 +81,21 @@
 							</th>
 						</tr>
 					</thead>
-					<!-- <tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
- 									    <input type="checkbox" class="form-check-input" value="">
- 									  </label>
-								</div>
-							</td>
-							<td>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
- 									    <input type="checkbox" class="form-check-input" value="">
- 									  </label>
-								</div>
-							</td>
-							<td>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
- 									    <input type="checkbox" class="form-check-input" value="">
- 									  </label>
-								</div>
-							</td>
-							<td>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
- 									    <input type="checkbox" class="form-check-input" value="">
- 									  </label>
-								</div>
-							</td>
-							<td>
-								<div class="form-check form-check-inline">
-									<label class="form-check-label">
- 									    <input type="checkbox" class="form-check-input" value="">
- 									  </label>
-								</div>
-							</td>
-						</tr>
-					</tbody> -->
 				</table>
-
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6" id="bar1 ">bar1</div>
+			<div class="col-md-6" id="bar1 ">Match
+				<svg id="fillgauge1" width="97%" height="250"></svg>
+			</div>
 			<div class="col-md-6" id="flower">flower</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" id="footer">Daan Uittenhout</div>
-		</div>
 	</div>
+
+
+	<footer class="container-fluid bg-4 text-center">
+		<p>Made By <a href="https://www.linkedin.com/in/daan-uittenhout-53770bb4/">Daan Uittenhout</a></p>
+	</footer>
 
 
 

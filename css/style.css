@@ -1,73 +1,97 @@
 tool.tooltip {
- 	position: absolute;
-	text-align: center;
-	width: 70px;
-	height: 50px;
-	padding: 2px;
-	font: 12px sans-serif;
-	background: white;
-	border: 0px;
-	border-radius: 10px;
-	pointer-events: none;
+  position: absolute;
+  text-align: center;
+  width: 70px;
+  height: 50px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: white;
+  border: 0px;
+  border-radius: 10px;
+  pointer-events: none;
 }
-
 
 body {
   text-align: center;
   font: 10px sans-serif;
 }
-#scrollable { height: 100px; overflow: hidden; border: solid 1px white;}
-#scrollable .inner { height: 1000px; }
+
+#scrollable {
+  height: 100px;
+  overflow: hidden;
+  border: solid 1px white;
+}
+
+#scrollable .inner {
+  height: 1000px;
+}
+
 #scrollable .content {
-             height: 94px;  margin: 2px 0;
-             background-color: steelblue;
-             color: white;}
+  height: 94px;
+  margin: 2px 0;
+  background-color: steelblue;
+  color: white;
+}
 
 #map {
   background: white
 }
 
 .datamap {
-  background: red
-  width: 100%
+  background: red width: 100%
 }
+
 #header {
-  background: blue
+  background: white
 }
-#legend {
-  background: orange
-}
+
 #checkboxes {
-  background: green
+  background: white
+  text-align: left
 }
-th{
+ol {
+    text-align: left
+}
+
+th {
   text-align: center;
 }
-table,
-table td {
-    font-weight: bold;
-    background-color: #fff;
-    border-collapse: separate;
-    border-spacing: 0px; /* This line */
-    border: 1px solid #b8202a;
+
+table, table td {
+  font-weight: bold;
+  background-color: #fff;
+  border-collapse: separate;
+  border-spacing: 0px;
+  /* This line */
+  border: 1px solid #b8202a;
 }
+
 #slider {
-  background: brown
+  background: white
 }
-#gobutton {
-  background: darkblue
+
+.bg-1 {
+  background-color: #1abc9c;
+  /* Green */
+  color: #ffffff;
 }
-#resetbutton {
-  background: red
+
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
-#flower{
+
+#flower {
   background: white;
 }
+
 #bar {
   background: white
 }
+
 .xAxis {
   stroke-width: 1px;
-
 }
+
 /* Legend Font Style */
