@@ -1,3 +1,7 @@
+/* Daan Uittenhout
+11057777
+Java Script for index.html
+main script with functionality */
 window.onload = function(e) {
 
   // declare global variables
@@ -6,9 +10,9 @@ window.onload = function(e) {
     fill = "100%",
     height = 500,
     width = 300;
-  // make alle the svg's for the grid
+  // create all svgs for the grid
   svg = d3.select("#map1").append("svg")
-    .attr("height", 900)
+    .attr("height", 1000)
     .attr("width", 0)
     .attr("class", "svg2")
 
@@ -21,8 +25,8 @@ window.onload = function(e) {
     .attr("width", fill)
     .attr("id", "pie")
     .append('g') //create a group to hold our pie chart
-    .attr('transform', 'translate(' + (width / 2) +
-      ',' + (150) + ')'); //move the center of the pie chart from 0, 0 to specified value
+    .attr('transform', 'translate(' + (400) +
+      ',' + (275) + ')'); //move the center of the pie chart from 0, 0 to specified value
 
   svg3 = d3.select("#bar").append("svg")
     .attr("height", 600)
@@ -120,16 +124,19 @@ window.onload = function(e) {
     })
     // create the click function for the map to select data and scroll down
     d3.selectAll('.datamaps-subunit').on("click", function(d, dataBar) {
-      $('html,body').animate({
-        scrollTop: $("#slider").offset().top
-      }, 'slow')
-      if (d["id"] != "") {
-        country = d["properties"]["name"]
-        console.log(country);
-        countrycode = d["id"];
-        data1 = data[String(year1)][String(countrycode)]
-        updatebar(data1, country, year1, x, y)
-        title.text(year1 + " " + country)
+      // check if not kosovo because no data available
+      if (d["id"] != "kosovo") {
+        $('html,body').animate({
+          scrollTop: $("#slider").offset().top
+        }, 'slow')
+        if (d["id"] != "") {
+          country = d["properties"]["name"]
+          console.log(country);
+          countrycode = d["id"];
+          data1 = data[String(year1)][String(countrycode)]
+          updatebar(data1, country, year1, x, y)
+          title.text(year1 + " " + country)
+        }
 
       }
     });

@@ -1,3 +1,6 @@
+/* Daan Uittenhout
+11057777
+Java Script with functions for main.js */
 // update the bar chart
 function updatebar(data1, country, year1, x, y, remove) {
 

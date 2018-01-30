@@ -1,11 +1,11 @@
-- Comments: Hoofdletters
-- Varable name: camelCase
-- space for operaters
-- line lenghth 80 characters
+- Comments: Capitalized
+- Variable name: camelCase
+- space for operators
+- line length 80 characters
 - double quotes
-- indentatie 4 spaces (1 tab)
+- indentation 4 spaces (1 tab)
 - space after keyword
-- taal espanol
-- witte regels
+- Languages English
+- white regels
 - punt comma
-- meerdere variables
+- multiple variables

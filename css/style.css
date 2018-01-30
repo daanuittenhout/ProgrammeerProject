@@ -1,3 +1,6 @@
+/* Daan Uittenhout
+11057777
+CSS for index.html */
 tool.tooltip {
   position: absolute;
   text-align: center;
@@ -9,6 +12,10 @@ tool.tooltip {
   border: 0px;
   border-radius: 10px;
   pointer-events: none;
+}
+.row{
+  border:1px solid black;
+
 }
 
 body {
@@ -37,9 +44,7 @@ body {
   background: white
 }
 
-.datamap {
-  width: 100%
-}
+
 
 #header {
   background: white
@@ -63,8 +68,13 @@ table, table td {
   background-color: #fff;
   border-collapse: separate;
   border-spacing: 0px;
-  /* This line */
+  margin-bottom: 0rem;
   border: 1px solid #b8202a;
+}
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
 }
 
 #slider {

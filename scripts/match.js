@@ -1,4 +1,10 @@
+/* made by Curtis Bratton adjusted by Daan Uittenhout
+11057777
+Java Script for bubble gauge in main.js
+main script */
+// set defult settings for bubble gauge
 function liquidFillGaugeDefaultSettings() {
+
   return {
     minValue: 0, // The gauge minimum value.
     maxValue: 100, // The gauge maximum value.
@@ -8,7 +14,7 @@ function liquidFillGaugeDefaultSettings() {
     waveHeight: 0.05, // The wave height as a percentage of the radius of the wave circle.
     waveCount: 1, // The number of full waves per width of the wave circle.
     waveRiseTime: 1000, // The amount of time in milliseconds for the wave to rise from 0 to it's final height.
-    waveAnimateTime: 18000, // The amount of time in milliseconds for a full wave to enter the wave circle.
+    waveAnimateTime: 1800, // The amount of time in milliseconds for a full wave to enter the wave circle.
     waveRise: true, // Control if the wave should rise from 0 to it's full height, or start at it's full height.
     waveHeightScaling: true, // Controls wave size scaling at low and high fill percentages. When true, wave height reaches it's maximum at 50% fill, and minimum at 0% and 100% fill. This helps to prevent the wave from making the wave circle from appear totally full or empty when near it's minimum or maximum fill.
     waveAnimate: true, // Controls if the wave scrolls or is static.
@@ -22,7 +28,7 @@ function liquidFillGaugeDefaultSettings() {
     waveTextColor: "#A4DBf8" // The color of the value text when the wave overlaps it.
   };
 }
-
+// load and create gauge
 function loadLiquidFillGauge(elementId, value, config) {
   if (config == null) config = liquidFillGaugeDefaultSettings();
 
@@ -31,7 +37,6 @@ function loadLiquidFillGauge(elementId, value, config) {
   var locationX = parseInt(gauge.style("width")) / 2 - radius;
   var locationY = parseInt(gauge.style("height")) / 2 - radius;
   var fillPercent = Math.max(config.minValue, Math.min(config.maxValue, value)) / config.maxValue;
-
   var waveHeightScale;
   if (config.waveHeightScaling) {
     waveHeightScale = d3.scale.linear()
