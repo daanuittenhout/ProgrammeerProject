@@ -1,18 +1,6 @@
 /* Daan Uittenhout
 11057777
 CSS for index.html */
-tool.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 70px;
-  height: 50px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: white;
-  border: 0px;
-  border-radius: 10px;
-  pointer-events: none;
-}
 .row{
   border:1px solid black;
 
@@ -43,7 +31,21 @@ body {
 #map {
   background: white
 }
-
+.textgauge{
+  text-align: left;
+  font: 15px sans-serif;
+  font-weight: bold;
+}
+.yaxis path, .yaxis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.xaxis path, .xaxis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
 
 
 #header {
@@ -61,6 +63,11 @@ ol {
 
 th {
   text-align: center;
+}
+.d3-tip {
+  text-align: left;
+  font: 15px sans-serif;
+  font-weight: bold;
 }
 
 table, table td {

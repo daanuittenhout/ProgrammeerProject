@@ -5,16 +5,16 @@ main script with functionality */
 window.onload = function(e) {
 
   // declare global variables
-  h = 500,
-    w = 1000,
-    fill = "100%",
-    height = 500,
-    width = 300;
+  h = 500;
+  w = 1000;
+  fill = "100%";
+  height = 500;
+  width = 300;
   // create all svgs for the grid
   svg = d3.select("#map1").append("svg")
     .attr("height", 1000)
     .attr("width", 0)
-    .attr("class", "svg2")
+    .attr("class", "svg2");
 
   svg1 = d3.select("#checkbox").append("svg")
     .attr("height", h)
@@ -24,9 +24,9 @@ window.onload = function(e) {
     .attr("height", h)
     .attr("width", fill)
     .attr("id", "pie")
-    .append('g') //create a group to hold our pie chart
-    .attr('transform', 'translate(' + (400) +
-      ',' + (275) + ')'); //move the center of the pie chart from 0, 0 to specified value
+    .append("g") //create a group to hold our pie chart
+    .attr("transform", "translate(" + (400) +
+      "," + (275) + ")"); //move the center of the pie chart from 0, 0 to specified value
 
   svg3 = d3.select("#bar").append("svg")
     .attr("height", 600)
@@ -38,7 +38,6 @@ window.onload = function(e) {
   // declare x and y for the bar chart
   x = d3.scale.ordinal()
     .rangeRoundBands([0, 600], .5);
-
   y = d3.scale.linear()
     .range([h, 0]);
   // determine the radius for the pie chart
@@ -46,13 +45,14 @@ window.onload = function(e) {
   // the start year for the slider
   year1 = 2003
   // colour for the piechart
-  var colour = d3.scale.category20c();
+  var colour = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c",
+  "#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"];
   // tooltip lay out
   var tip = d3.tip()
-    .attr('class', 'd3-tip')
+    .attr("class", "d3-tip")
     .offset([-10, 0])
     .html(function(d, i) {
-      return "<strong>Country:</strong> <span style='color:red'>" + countriestop[i] + "</span>";
+      return "<strong>Country:</strong> <span style=color:red>" + countriestop[i] + "</span>";
     })
   // piechart arc
   var arc = d3.svg.arc().outerRadius(radius);
@@ -71,13 +71,13 @@ window.onload = function(e) {
     // make map with configurations
     var map = new Datamap({
       element: document.getElementById("map2"),
-      projection: 'mercator',
+      projection: "mercator",
       fills: {
         defaultFill: "black"
       },
       geographyConfig: {
-        highlightBorderColor: '#bada55',
-        // create hover-info
+        highlightBorderColor: "#bada55",
+        // create hover-info with a datamaps build in function
         popupTemplate: function(geography, d) {
           ctr = "not known"
           if (typeof data[geography.properties.name] !== "undefined") {
@@ -86,11 +86,11 @@ window.onload = function(e) {
               ctr = String(dummy) + ("%")
             }
           }
-          return ['<div class="hoverinfo">',
-            '<strong>', geography.properties.name, '</strong>',
-            '<br>Tax rate: <strong>', ctr, '</strong>',
-            '</div>'
-          ].join('');
+          return ["<div class=hoverinfo>",
+            "<strong>", geography.properties.name, "</strong>",
+            "<br>Tax rate: <strong>", ctr, "</strong>",
+            "</div>"
+          ].join("");
         },
         highlightBorderWidth: 3
       }
@@ -101,13 +101,13 @@ window.onload = function(e) {
     })
   })
   // scroll down when here button is clicked
-  d3.selectAll('#herebutton').on("click", function(d) {
-    $('html,body').animate({
+  d3.selectAll("#herebutton").on("click", function(d) {
+    $("html,body").animate({
       scrollTop: $("#header").offset().top
-    }, 'slow')
+    }, "slow")
   })
 
-  // load data for bar chart and let it iteract with slider
+  // load data for bar chart and let it interact with slider
   d3.json("./data/dataBar1.json", function(data) {
     dataBar = data
     d3.select("#year").on("input", function() {
@@ -122,16 +122,16 @@ window.onload = function(e) {
         updatebar(data1, country, year1, x, y)
       }
     })
+
     // create the click function for the map to select data and scroll down
-    d3.selectAll('.datamaps-subunit').on("click", function(d, dataBar) {
+    d3.selectAll(".datamaps-subunit").on("click", function(d, dataBar) {
       // check if not kosovo because no data available
       if (d["id"] != "kosovo") {
-        $('html,body').animate({
+        $("html,body").animate({
           scrollTop: $("#slider").offset().top
-        }, 'slow')
+        }, "slow")
         if (d["id"] != "") {
           country = d["properties"]["name"]
-          console.log(country);
           countrycode = d["id"];
           data1 = data[String(year1)][String(countrycode)]
           updatebar(data1, country, year1, x, y)
@@ -141,6 +141,7 @@ window.onload = function(e) {
       }
     });
   });
+
   // create table
   tableCreate()
   // add numbers to table
@@ -154,12 +155,16 @@ window.onload = function(e) {
     d3.selectAll(".piechart").remove()
     d3.selectAll(".radio").remove()
     d3.selectAll("#match1").remove()
+    d3.selectAll("#textgauge").remove()
+
     radiobutt()
   })
   // calculate new data with go button en remove old charts
   d3.select("#gobutton").on("click", function(d) {
     d3.selectAll(".piechart").remove()
     d3.selectAll("#match1").remove()
+    d3.selectAll("#textgauge").remove()
+
     //
     lists = ["Minwage", "English", "ChildLabour", "Environment", "Education",
       "Inovation", "Infrastructure", "ICTAcces", "TaxRate"
@@ -174,9 +179,9 @@ window.onload = function(e) {
     if (count < 9) {
       alert("Please fill in all the questions");
     } else {
-      $('html,body').animate({
+      $("html,body").animate({
         scrollTop: $("#flower").offset().top
-      }, 'slow')
+      }, "slow")
       // load data of the ranks of the country
       d3.json("./data/ranks.json", function(data) {
         results = []
@@ -203,7 +208,7 @@ window.onload = function(e) {
         counts = {}
         frequency(allResults)
         // sort the coutries on frequency
-        var sortedCountries = sortProperties(counts)
+        sortedCountries = sortProperties(counts)
         total = 0;
         // take the top 5 most frequent countries
         countriestop = []
@@ -221,27 +226,28 @@ window.onload = function(e) {
         var path = svg2.selectAll("path")
           .data(pie(percentages))
           .enter()
-          .append('path')
+          .append("path")
           .attr("class", "piechart")
-          .attr('d', arc)
-          .attr('fill', function(d, i) {
-            return colour(i);
+          .attr("d", arc)
+          .attr("fill", function(d, i) {
+            return colour[i];
           })
-          .on('mouseover', tip.show)
-          .on('mouseout', tip.hide)
+          .on("mouseover", tip.show)
+          .on("mouseout", tip.hide)
           .on("click", function(d, i) {
             // delete the old gauge and initiate a new one
             d3.selectAll("#match1").remove()
-            var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(((sortedCountries.slice(0, 5)[i][1] / 9) * 100), 2));
-            var config1 = liquidFillGaugeDefaultSettings();
-            config1.circleColor = "#FF7777";
-            config1.textColor = "#FF4444";
-            config1.waveTextColor = "#FFAAAA";
-            config1.waveColor = "#FFDDDD";
-            config1.circleThickness = 0.2;
-            config1.textVertPosition = 0.2;
-            config1.waveAnimateTime = 1000;
-            return countriestop[i];
+            d3.selectAll("#textgauge").remove()
+
+            d3.select("#matchtitle").insert("text").text(countriestop[i])
+            .attr("id", "textgauge")
+            .attr("x", "125")
+            .attr("y", "125")
+            .style("font-weight", "bold")
+            .style("font-size", "15px")
+            .style("align", "center")
+            var match = Math.round(((sortedCountries.slice(0, 5)[i][1] / 9) * 100), 2)
+            createBubble(match)
           })
       })
     }
